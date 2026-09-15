@@ -109,6 +109,13 @@ void setup() {
     digitalWrite(GREEN_LED, HIGH);
 }
 void loop() {
+    UltrasonicSensor::Measurement measurement = sensor.getDistance();
 
-   
+    float distance = 0.0f;
+
+    DistanceState state = classifyDistance(measurement, distance);
+
+    reportMeasurement(state, distance);
+
+    applyLedState(state);
 }
