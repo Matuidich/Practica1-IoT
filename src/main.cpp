@@ -98,23 +98,17 @@ void applyLedState(DistanceState state) {
 }
 
 void setup() {
-
     Serial.begin(SERIAL_BAUD_RATE);
-
-    sensor.begin();
 
     pinMode(RED_LED, OUTPUT);
     pinMode(YELLOW_LED, OUTPUT);
     pinMode(GREEN_LED, OUTPUT);
-    applyLedState(DistanceState::Invalid);
-}
 
+    digitalWrite(RED_LED, HIGH);
+    digitalWrite(YELLOW_LED, HIGH);
+    digitalWrite(GREEN_LED, HIGH);
+}
 void loop() {
 
-    UltrasonicSensor::Measurement measurement = sensor.getDistance();
-    float distance = 0.0f;
-    DistanceState state = classifyDistance(measurement, distance);
-
-    reportMeasurement(state, distance);
-    applyLedState(state);
+   
 }
